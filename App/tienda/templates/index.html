@@ -11,7 +11,10 @@
         <a href="{% url 'index' %}"><li>Index</li>  </a>
         <a href="{% url 'prueba' %}"><li>Prueba</li></a>
         <a href="{% url 'user' %}"><li>Autor</li></a>
-        
+        <a href="{% url 'saludar' 'Juan' %}"><li>Saludar a Juan</li></a>
+        <a href="{% url 'suma' 20 10 %}"><li>Sumar 20 + 10</li></a>
+        <a href="{% url 'encuesta_form' %}"><li>Formulario</li></a>
+
     </ul>
 </body>
 </html>
