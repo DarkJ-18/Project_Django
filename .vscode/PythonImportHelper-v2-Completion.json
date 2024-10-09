@@ -73,11 +73,11 @@
         "documentation": {}
     },
     {
-        "label": "AppConfig",
-        "importPath": "django.apps",
-        "description": "django.apps",
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
         "isExtraImport": true,
-        "detail": "django.apps",
+        "detail": "django.db",
         "documentation": {}
     },
     {
@@ -86,6 +86,22 @@
         "description": "django.db",
         "isExtraImport": true,
         "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
         "documentation": {}
     },
     {
@@ -302,12 +318,30 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "App.tienda.migrations.0001_initial",
+        "description": "App.tienda.migrations.0001_initial",
+        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Product',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n                ('cod', models.IntegerField(unique=True)),",
+        "detail": "App.tienda.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
         "label": "TiendaConfig",
         "kind": 6,
         "importPath": "App.tienda.apps",
         "description": "App.tienda.apps",
         "peekOfCode": "class TiendaConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'tienda'",
         "detail": "App.tienda.apps",
+        "documentation": {}
+    },
+    {
+        "label": "Product",
+        "kind": 6,
+        "importPath": "App.tienda.models",
+        "description": "App.tienda.models",
+        "peekOfCode": "class Product(models.Model):\n    cod = models.IntegerField(unique=True)\n    nombre = models.CharField(max_length=254)\n    precio = models.IntegerField()\n    #makemigrations tienda => cambios al model \n    #migrate",
+        "detail": "App.tienda.models",
         "documentation": {}
     },
     {
