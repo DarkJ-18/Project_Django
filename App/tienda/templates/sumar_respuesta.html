@@ -1,0 +1,10 @@
+<p>
+    {% if respuesta < 20 %}
+    <p> la suma de {{ n1 }} + {{ n2 }} es:  <strong style="color:red;">{{ respuesta }}</strong> </p> 
+
+    {% elif respuesta >= 20 and respuesta <= 50 %}
+        <p> la suma de {{ n1 }} + {{ n2 }} es:  <strong style="color:blue;">{{ respuesta }}</strong> </p> 
+    {% else %} 
+    <p> la suma de {{ n1 }} + {{ n2 }} es:  <strong style="color:green;">{{ respuesta }}</strong> </p> 
+    {% endif %}
+</p>

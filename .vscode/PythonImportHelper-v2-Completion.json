@@ -315,7 +315,7 @@
         "kind": 5,
         "importPath": "App.tienda.urls",
         "description": "App.tienda.urls",
-        "peekOfCode": "urlpatterns = [\n    path('', views.index, name='index'),\n    path(\"prueba/\", views.prueba, name=\"prueba\"),\n    path(\"user/\", views.user, name=\"user\"),\n    path(\"saludar/<str:apellido>/\", views.saludar, name=\"saludar\"),\n    path(\"suma/<int:num1>/<int:num2>/\", views.suma, name=\"suma\"),\n    path(\"encuesta_form/\", views.encuesta_form, name=\"encuesta_form\"),\n    path(\"procesar_encuesta/\", views.procesar_encuesta, name=\"procesar_encuesta\"),\n]",
+        "peekOfCode": "urlpatterns = [\n    path('', views.index, name='index'),\n    path(\"prueba/\", views.prueba, name=\"prueba\"),\n    path(\"user/\", views.user, name=\"user\"),\n    path(\"saludar/<str:apellido>/\", views.saludar, name=\"saludar\"),\n    path(\"suma/<int:num1>/<int:num2>/\", views.suma, name=\"suma\"),\n    path(\"encuesta_form/\", views.encuesta_form, name=\"encuesta_form\"),\n    path(\"procesar_encuesta/\", views.procesar_encuesta, name=\"procesar_encuesta\"),\n    path(\"sumar_formulario/\", views.sumar_formulario, name=\"sumar_formulario\"),\n]",
         "detail": "App.tienda.urls",
         "documentation": {}
     },
@@ -324,7 +324,7 @@
         "kind": 2,
         "importPath": "App.tienda.views",
         "description": "App.tienda.views",
-        "peekOfCode": "def prueba(request):\n    return HttpResponse(\"<h1 style='color:#000fff;'> Hola mundo </h1>\")\ndef user(request):\n    return HttpResponse(\"<h1 style='color:Green;'> Juan Camilo Gallego Jurado</h1>\"\n                        \"<a href='../prueba/'>Link</a>\")\ndef index(request):\n    #return HttpResponse(\"Index\")\n    return render(request, \"index.html\")\ndef saludar(request, apellido):\n    return HttpResponse(f\"Hola {apellido}\")",
+        "peekOfCode": "def prueba(request):\n    return HttpResponse(\"<h1 style='color:#000fff;'> Hola mundo </h1>\")\ndef user(request):\n    return HttpResponse(\n        \"<h1 style='color:Green;'> Juan Camilo Gallego Jurado</h1>\"\n        \"<a href='../prueba/'>Link</a>\"\n    )\ndef index(request):\n    # return HttpResponse(\"Index\")\n    return render(request, \"index.html\")",
         "detail": "App.tienda.views",
         "documentation": {}
     },
@@ -333,7 +333,7 @@
         "kind": 2,
         "importPath": "App.tienda.views",
         "description": "App.tienda.views",
-        "peekOfCode": "def user(request):\n    return HttpResponse(\"<h1 style='color:Green;'> Juan Camilo Gallego Jurado</h1>\"\n                        \"<a href='../prueba/'>Link</a>\")\ndef index(request):\n    #return HttpResponse(\"Index\")\n    return render(request, \"index.html\")\ndef saludar(request, apellido):\n    return HttpResponse(f\"Hola {apellido}\")\ndef suma(request, num1, num2):\n    return HttpResponse(f\"Resultado: {num1+num2}\")",
+        "peekOfCode": "def user(request):\n    return HttpResponse(\n        \"<h1 style='color:Green;'> Juan Camilo Gallego Jurado</h1>\"\n        \"<a href='../prueba/'>Link</a>\"\n    )\ndef index(request):\n    # return HttpResponse(\"Index\")\n    return render(request, \"index.html\")\ndef saludar(request, apellido):\n    return HttpResponse(f\"Hola {apellido}\")",
         "detail": "App.tienda.views",
         "documentation": {}
     },
@@ -342,7 +342,7 @@
         "kind": 2,
         "importPath": "App.tienda.views",
         "description": "App.tienda.views",
-        "peekOfCode": "def index(request):\n    #return HttpResponse(\"Index\")\n    return render(request, \"index.html\")\ndef saludar(request, apellido):\n    return HttpResponse(f\"Hola {apellido}\")\ndef suma(request, num1, num2):\n    return HttpResponse(f\"Resultado: {num1+num2}\")\ndef encuesta_form(request):\n    return render(request, \"formulario_encuesta.html\")\ndef procesar_encuesta(request):",
+        "peekOfCode": "def index(request):\n    # return HttpResponse(\"Index\")\n    return render(request, \"index.html\")\ndef saludar(request, apellido):\n    return HttpResponse(f\"Hola {apellido}\")\ndef suma(request, num1, num2):\n    return HttpResponse(f\"Resultado: {num1+num2}\")\ndef encuesta_form(request):\n    return render(request, \"formulario_encuesta.html\")\ndef procesar_encuesta(request):",
         "detail": "App.tienda.views",
         "documentation": {}
     },
@@ -351,7 +351,7 @@
         "kind": 2,
         "importPath": "App.tienda.views",
         "description": "App.tienda.views",
-        "peekOfCode": "def saludar(request, apellido):\n    return HttpResponse(f\"Hola {apellido}\")\ndef suma(request, num1, num2):\n    return HttpResponse(f\"Resultado: {num1+num2}\")\ndef encuesta_form(request):\n    return render(request, \"formulario_encuesta.html\")\ndef procesar_encuesta(request):\n    nombre = request.POST.get(\"name\")\n    hambre = request.POST.get(\"hambre\")\n    return HttpResponse(F\"Su nombre es <b>{nombre}</b> y <b>{hambre}</b> tiene hambre!!\")",
+        "peekOfCode": "def saludar(request, apellido):\n    return HttpResponse(f\"Hola {apellido}\")\ndef suma(request, num1, num2):\n    return HttpResponse(f\"Resultado: {num1+num2}\")\ndef encuesta_form(request):\n    return render(request, \"formulario_encuesta.html\")\ndef procesar_encuesta(request):\n    nombre = request.POST.get(\"name\")\n    hambre = request.POST.get(\"hambre\")\n    return HttpResponse(",
         "detail": "App.tienda.views",
         "documentation": {}
     },
@@ -360,7 +360,7 @@
         "kind": 2,
         "importPath": "App.tienda.views",
         "description": "App.tienda.views",
-        "peekOfCode": "def suma(request, num1, num2):\n    return HttpResponse(f\"Resultado: {num1+num2}\")\ndef encuesta_form(request):\n    return render(request, \"formulario_encuesta.html\")\ndef procesar_encuesta(request):\n    nombre = request.POST.get(\"name\")\n    hambre = request.POST.get(\"hambre\")\n    return HttpResponse(F\"Su nombre es <b>{nombre}</b> y <b>{hambre}</b> tiene hambre!!\")",
+        "peekOfCode": "def suma(request, num1, num2):\n    return HttpResponse(f\"Resultado: {num1+num2}\")\ndef encuesta_form(request):\n    return render(request, \"formulario_encuesta.html\")\ndef procesar_encuesta(request):\n    nombre = request.POST.get(\"name\")\n    hambre = request.POST.get(\"hambre\")\n    return HttpResponse(\n        f\"Su nombre es <b>{nombre}</b> y <b>{hambre}</b> tiene hambre!!\"\n    )",
         "detail": "App.tienda.views",
         "documentation": {}
     },
@@ -369,7 +369,7 @@
         "kind": 2,
         "importPath": "App.tienda.views",
         "description": "App.tienda.views",
-        "peekOfCode": "def encuesta_form(request):\n    return render(request, \"formulario_encuesta.html\")\ndef procesar_encuesta(request):\n    nombre = request.POST.get(\"name\")\n    hambre = request.POST.get(\"hambre\")\n    return HttpResponse(F\"Su nombre es <b>{nombre}</b> y <b>{hambre}</b> tiene hambre!!\")",
+        "peekOfCode": "def encuesta_form(request):\n    return render(request, \"formulario_encuesta.html\")\ndef procesar_encuesta(request):\n    nombre = request.POST.get(\"name\")\n    hambre = request.POST.get(\"hambre\")\n    return HttpResponse(\n        f\"Su nombre es <b>{nombre}</b> y <b>{hambre}</b> tiene hambre!!\"\n    )\ndef sumar_formulario(request):\n    if request.method == \"POST\":",
         "detail": "App.tienda.views",
         "documentation": {}
     },
@@ -378,7 +378,16 @@
         "kind": 2,
         "importPath": "App.tienda.views",
         "description": "App.tienda.views",
-        "peekOfCode": "def procesar_encuesta(request):\n    nombre = request.POST.get(\"name\")\n    hambre = request.POST.get(\"hambre\")\n    return HttpResponse(F\"Su nombre es <b>{nombre}</b> y <b>{hambre}</b> tiene hambre!!\")",
+        "peekOfCode": "def procesar_encuesta(request):\n    nombre = request.POST.get(\"name\")\n    hambre = request.POST.get(\"hambre\")\n    return HttpResponse(\n        f\"Su nombre es <b>{nombre}</b> y <b>{hambre}</b> tiene hambre!!\"\n    )\ndef sumar_formulario(request):\n    if request.method == \"POST\":\n        n1 = int(request.POST.get(\"num1\"))\n        n2 = int(request.POST.get(\"num2\"))",
+        "detail": "App.tienda.views",
+        "documentation": {}
+    },
+    {
+        "label": "sumar_formulario",
+        "kind": 2,
+        "importPath": "App.tienda.views",
+        "description": "App.tienda.views",
+        "peekOfCode": "def sumar_formulario(request):\n    if request.method == \"POST\":\n        n1 = int(request.POST.get(\"num1\"))\n        n2 = int(request.POST.get(\"num2\"))\n        # return HttpResponse(f\"la suma de {n1} + {n2} es <strong>{n1+n2}</strong>\")\n        contexto = {\"n1\": n1, \"n2\": n2, \"respuesta\": n1 + n2}\n        return render(\n            request,\n            \"sumar_respuesta.html\",contexto\n        )",
         "detail": "App.tienda.views",
         "documentation": {}
     },
