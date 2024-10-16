@@ -53,3 +53,9 @@ def sumar_formulario(request):
         )
     else:
         return render(request, "sumar_formulario.html")
+
+
+#CRUD
+
+def productos(request):
+    return render(request,"productos/lista_productos.html") 

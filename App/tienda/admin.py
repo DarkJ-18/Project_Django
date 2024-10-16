@@ -13,3 +13,11 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ['nombre', 'cod', 'categoria', 'stock']
     list_filter = ['cod','categoria']
     list_editable = ['nombre', 'categoria','stock']
+    
+@admin.register(Factura)
+class FacturaAdmin(admin.ModelAdmin):
+    list_display = ['id', 'cliente', 'fecha', 'num_factura','product']
+    search_fields = ['fecha', 'cliente', 'num_factura']
+    list_filter = ['fecha','cliente']
+    list_editable = ['fecha', 'product','num_factura']
+

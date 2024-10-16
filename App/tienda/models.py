@@ -1,6 +1,9 @@
 from django.db import models
 
 # Create your models here.
+#makemigrations tienda => cambios al model 
+#migrate
+#python3 manage.py createsuperuser => admin
 
 class Product(models.Model):
     cod = models.IntegerField(unique=True)
@@ -15,14 +18,15 @@ class Product(models.Model):
     )
     categoria = models.IntegerField(choices=CATEGORIAS, default=0, null=True, blank=True)
     
+    def __str__(self):
+        return f"{self.id} - {self.nombre} - ({self.stock} unidades)"
     
-    class Factura(models.Model):
-        fecha = models.DateField(help_text="Fecha de Factura YYYY-MM-DD")
-        cliente = models.CharField(max_length=100)
-        num_factura = models.IntegerField()
-        product = models.ForeignKey('Product', )
+class Factura(models.Model):
+    fecha = models.DateField(help_text="Fecha de Factura YYYY-MM-DD")
+    cliente = models.CharField(max_length=100)
+    num_factura = models.IntegerField()
+    product = models.ForeignKey('Product', on_delete=models.DO_NOTHING)
     
-    #makemigrations tienda => cambios al model 
-    
-    #migrate
+    def __str__(self):
+        return f"{self.num_factura} - {self.cliente}"
     

@@ -105,11 +105,36 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
         "isExtraImport": true,
         "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "django.db.models.deletion",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.db.models.deletion",
+        "description": "django.db.models.deletion",
+        "detail": "django.db.models.deletion",
         "documentation": {}
     },
     {
@@ -352,11 +377,29 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "App.tienda.migrations.0003_factura",
+        "description": "App.tienda.migrations.0003_factura",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('tienda', '0002_product_categoria_product_stock'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Factura',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n                ('fecha', models.DateField(help_text='Fecha de Factura YYYY-MM-DD')),",
+        "detail": "App.tienda.migrations.0003_factura",
+        "documentation": {}
+    },
+    {
         "label": "ProductAdmin",
         "kind": 6,
         "importPath": "App.tienda.admin",
         "description": "App.tienda.admin",
-        "peekOfCode": "class ProductAdmin(admin.ModelAdmin):\n    list_display = ['id', 'cod', 'nombre', 'precio','categoria','stock']\n    search_fields = ['nombre', 'cod', 'categoria', 'stock']\n    list_filter = ['cod','categoria']\n    list_editable = ['nombre', 'categoria','stock']",
+        "peekOfCode": "class ProductAdmin(admin.ModelAdmin):\n    list_display = ['id', 'cod', 'nombre', 'precio','categoria','stock']\n    search_fields = ['nombre', 'cod', 'categoria', 'stock']\n    list_filter = ['cod','categoria']\n    list_editable = ['nombre', 'categoria','stock']\n@admin.register(Factura)\nclass FacturaAdmin(admin.ModelAdmin):\n    list_display = ['id', 'cliente', 'fecha', 'num_factura','product']\n    search_fields = ['fecha', 'cliente', 'num_factura']\n    list_filter = ['fecha','cliente']",
+        "detail": "App.tienda.admin",
+        "documentation": {}
+    },
+    {
+        "label": "FacturaAdmin",
+        "kind": 6,
+        "importPath": "App.tienda.admin",
+        "description": "App.tienda.admin",
+        "peekOfCode": "class FacturaAdmin(admin.ModelAdmin):\n    list_display = ['id', 'cliente', 'fecha', 'num_factura','product']\n    search_fields = ['fecha', 'cliente', 'num_factura']\n    list_filter = ['fecha','cliente']\n    list_editable = ['fecha', 'product','num_factura']",
         "detail": "App.tienda.admin",
         "documentation": {}
     },
@@ -379,11 +422,20 @@
         "documentation": {}
     },
     {
+        "label": "Factura",
+        "kind": 6,
+        "importPath": "App.tienda.models",
+        "description": "App.tienda.models",
+        "peekOfCode": "class Factura(models.Model):\n    fecha = models.DateField(help_text=\"Fecha de Factura YYYY-MM-DD\")\n    cliente = models.CharField(max_length=100)\n    num_factura = models.IntegerField()\n    product = models.ForeignKey('Product', on_delete=models.DO_NOTHING)\n    def __str__(self):\n        return f\"{self.num_factura} - {self.cliente}\"",
+        "detail": "App.tienda.models",
+        "documentation": {}
+    },
+    {
         "label": "urlpatterns",
         "kind": 5,
         "importPath": "App.tienda.urls",
         "description": "App.tienda.urls",
-        "peekOfCode": "urlpatterns = [\n    path('', views.index, name='index'),\n    path(\"prueba/\", views.prueba, name=\"prueba\"),\n    path(\"user/\", views.user, name=\"user\"),\n    path(\"saludar/<str:apellido>/\", views.saludar, name=\"saludar\"),\n    path(\"suma/<int:num1>/<int:num2>/\", views.suma, name=\"suma\"),\n    path(\"encuesta_form/\", views.encuesta_form, name=\"encuesta_form\"),\n    path(\"procesar_encuesta/\", views.procesar_encuesta, name=\"procesar_encuesta\"),\n    path(\"sumar_formulario/\", views.sumar_formulario, name=\"sumar_formulario\"),\n]",
+        "peekOfCode": "urlpatterns = [\n    path('', views.index, name='index'),\n    path(\"prueba/\", views.prueba, name=\"prueba\"),\n    path(\"user/\", views.user, name=\"user\"),\n    path(\"saludar/<str:apellido>/\", views.saludar, name=\"saludar\"),\n    path(\"suma/<int:num1>/<int:num2>/\", views.suma, name=\"suma\"),\n    path(\"encuesta_form/\", views.encuesta_form, name=\"encuesta_form\"),\n    path(\"procesar_encuesta/\", views.procesar_encuesta, name=\"procesar_encuesta\"),\n    path(\"sumar_formulario/\", views.sumar_formulario, name=\"sumar_formulario\"),\n    #CRUD Productos",
         "detail": "App.tienda.urls",
         "documentation": {}
     },
@@ -456,6 +508,15 @@
         "importPath": "App.tienda.views",
         "description": "App.tienda.views",
         "peekOfCode": "def sumar_formulario(request):\n    if request.method == \"POST\":\n        n1 = int(request.POST.get(\"num1\"))\n        n2 = int(request.POST.get(\"num2\"))\n        # return HttpResponse(f\"la suma de {n1} + {n2} es <strong>{n1+n2}</strong>\")\n        contexto = {\"n1\": n1, \"n2\": n2, \"respuesta\": n1 + n2}\n        return render(\n            request,\n            \"sumar_respuesta.html\",contexto\n        )",
+        "detail": "App.tienda.views",
+        "documentation": {}
+    },
+    {
+        "label": "productos",
+        "kind": 2,
+        "importPath": "App.tienda.views",
+        "description": "App.tienda.views",
+        "peekOfCode": "def productos(request):\n    return render(request,\"productos/lista_productos.html\")",
         "detail": "App.tienda.views",
         "documentation": {}
     },
