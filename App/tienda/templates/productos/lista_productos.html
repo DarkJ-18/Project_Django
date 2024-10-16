@@ -1,0 +1,17 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for r in datos %}
+        <tr>
+            <td>{{r.nombre}}</td>
+            <td>{{r.precio}}</td>
+
+        </tr>
+        {%endfor%}  
+    </tbody>
+</table>

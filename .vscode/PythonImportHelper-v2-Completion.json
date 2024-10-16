@@ -516,7 +516,7 @@
         "kind": 2,
         "importPath": "App.tienda.views",
         "description": "App.tienda.views",
-        "peekOfCode": "def productos(request):\n    return render(request,\"productos/lista_productos.html\")",
+        "peekOfCode": "def productos(request):\n    produ = Product.objects.all()\n    contexto = {\n        \"datos\":produ\n    }\n    return render(request,\"productos/lista_productos.html\", contexto)",
         "detail": "App.tienda.views",
         "documentation": {}
     },

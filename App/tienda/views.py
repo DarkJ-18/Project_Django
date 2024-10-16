@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from .models import *
 
 # vistas basasdas en funciones
 
@@ -58,4 +59,9 @@ def sumar_formulario(request):
 #CRUD
 
 def productos(request):
-    return render(request,"productos/lista_productos.html") 
+    produ = Product.objects.all()
+    
+    contexto = {
+        "datos":produ
+    }
+    return render(request,"productos/lista_productos.html", contexto) 
