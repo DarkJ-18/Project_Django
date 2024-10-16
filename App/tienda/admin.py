@@ -5,4 +5,11 @@ from django.contrib import admin
 #python3 manage.py createsuperuser
 
 from .models import *
-admin.site.register(Product)
+
+
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ['id', 'cod', 'nombre', 'precio','categoria','stock']
+    search_fields = ['nombre', 'cod', 'categoria', 'stock']
+    list_filter = ['cod','categoria']
+    list_editable = ['nombre', 'categoria','stock']

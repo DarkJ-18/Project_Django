@@ -89,6 +89,22 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -304,7 +320,7 @@
         "kind": 5,
         "importPath": "App.App.urls",
         "description": "App.App.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('tienda/', include('tienda.urls')),\n]",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('', include('tienda.urls')),\n]",
         "detail": "App.App.urls",
         "documentation": {}
     },
@@ -327,6 +343,24 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "App.tienda.migrations.0002_product_categoria_product_stock",
+        "description": "App.tienda.migrations.0002_product_categoria_product_stock",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('tienda', '0001_initial'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='product',\n            name='categoria',\n            field=models.IntegerField(blank=True, choices=[(0, ''), (1, 'Ropa'), (2, 'Comida'), (3, 'Electrodoméstico')], default=0, null=True),\n        ),",
+        "detail": "App.tienda.migrations.0002_product_categoria_product_stock",
+        "documentation": {}
+    },
+    {
+        "label": "ProductAdmin",
+        "kind": 6,
+        "importPath": "App.tienda.admin",
+        "description": "App.tienda.admin",
+        "peekOfCode": "class ProductAdmin(admin.ModelAdmin):\n    list_display = ['id', 'cod', 'nombre', 'precio','categoria','stock']\n    search_fields = ['nombre', 'cod', 'categoria', 'stock']\n    list_filter = ['cod','categoria']\n    list_editable = ['nombre', 'categoria','stock']",
+        "detail": "App.tienda.admin",
+        "documentation": {}
+    },
+    {
         "label": "TiendaConfig",
         "kind": 6,
         "importPath": "App.tienda.apps",
@@ -340,7 +374,7 @@
         "kind": 6,
         "importPath": "App.tienda.models",
         "description": "App.tienda.models",
-        "peekOfCode": "class Product(models.Model):\n    cod = models.IntegerField(unique=True)\n    nombre = models.CharField(max_length=254)\n    precio = models.IntegerField()\n    #makemigrations tienda => cambios al model \n    #migrate",
+        "peekOfCode": "class Product(models.Model):\n    cod = models.IntegerField(unique=True)\n    nombre = models.CharField(max_length=254)\n    precio = models.IntegerField()\n    stock = models.IntegerField()\n    CATEGORIAS = (\n        (0, \"\"),\n        (1, \"Ropa\"),\n        (2, \"Comida\"),\n        (3, \"Electrodoméstico\"),",
         "detail": "App.tienda.models",
         "documentation": {}
     },
