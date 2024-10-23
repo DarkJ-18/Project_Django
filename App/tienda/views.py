@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.db import IntegrityError
 from .models import *
 
 # vistas basasdas en funciones
@@ -67,9 +68,16 @@ def productos(request):
     return render(request,"productos/lista_productos.html", contexto) 
 
 def eliminar_producto(request, id_produc):
-    produ = Product.objects.get(id=id_produc)
-    produ.delete()
-    return HttpResponse(f"Producto {produ.name} eliminado correctamente")
+    try:
+        produ = Product.objects.get(id=id_produc)
+        produ.delete()
+        return HttpResponse(f"Producto {produ.name} eliminado correctamente")
+    except Product.DoesNotExist:
+        return HttpResponse(f"El producto {produc.name} no existe")
+    except IntegrityError:
+        return HttpResponse("Error al eliminar el producto relacionado con otra tabla")
+    except Exception as e:
+        return HttpResponse(f"Error al eliminar el producto  {e}")
 
 def editar_producto(request, id_produc):
     pass

@@ -129,6 +129,14 @@
         "documentation": {}
     },
     {
+        "label": "IntegrityError",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "django.db.models.deletion",
         "kind": 6,
         "isExtraImport": true,
@@ -516,7 +524,7 @@
         "kind": 2,
         "importPath": "App.tienda.views",
         "description": "App.tienda.views",
-        "peekOfCode": "def productos(request):\n    produ = Product.objects.all()\n    contexto = {\n        \"datos\":produ\n    }\n    return render(request,\"productos/lista_productos.html\", contexto) \ndef eliminar_producto(request, id_produc):\n    produ = Product.objects.get(id=id_produc)\n    produ.delete()\n    return HttpResponse(f\"Producto {produ.name} eliminado correctamente\")",
+        "peekOfCode": "def productos(request):\n    produ = Product.objects.all()\n    contexto = {\n        \"datos\":produ\n    }\n    return render(request,\"productos/lista_productos.html\", contexto) \ndef eliminar_producto(request, id_produc):\n    try:\n        produ = Product.objects.get(id=id_produc)\n        produ.delete()",
         "detail": "App.tienda.views",
         "documentation": {}
     },
@@ -525,7 +533,7 @@
         "kind": 2,
         "importPath": "App.tienda.views",
         "description": "App.tienda.views",
-        "peekOfCode": "def eliminar_producto(request, id_produc):\n    produ = Product.objects.get(id=id_produc)\n    produ.delete()\n    return HttpResponse(f\"Producto {produ.name} eliminado correctamente\")\ndef editar_producto(request, id_produc):\n    pass",
+        "peekOfCode": "def eliminar_producto(request, id_produc):\n    try:\n        produ = Product.objects.get(id=id_produc)\n        produ.delete()\n        return HttpResponse(f\"Producto {produ.name} eliminado correctamente\")\n    except Product.DoesNotExist:\n        return HttpResponse(f\"El producto {produc.name} no existe\")\n    except IntegrityError:\n        return HttpResponse(\"Error al eliminar el producto relacionado con otra tabla\")\n    except Exception as e:",
         "detail": "App.tienda.views",
         "documentation": {}
     },
