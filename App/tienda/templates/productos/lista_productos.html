@@ -1,17 +1,33 @@
-<table class="table">
-    <thead>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Productos {% endblock %}
+
+{% block contenido %}
+
+<h1>Productos</h1>
+<table class="table table-bordered ">
+    <thead class="table-dark">
         <tr>
+            <th scope="col">ID</th>
             <th scope="col">Nombre</th>
             <th scope="col">Precio</th>
+            <th scope="col">Acciones</th>
         </tr>
     </thead>
     <tbody>
         {% for r in datos %}
         <tr>
+            <td>{{r.id}}</td>
             <td>{{r.nombre}}</td>
             <td>{{r.precio}}</td>
-
+            
+            <td>
+                <a href="{% url 'editar_producto' r.id%}" class="btn btn-warning">editar</a>
+                <a href="{% url 'eliminar_producto' r.id %}" class="btn btn-danger">Eliminar</a>
+            </td>
         </tr>
-        {%endfor%}  
+        {%endfor%}
     </tbody>
 </table>
+{% endblock %}

@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Encuesta {% endblock %}
+
+{% block contenido %}
+<h1>Tienda Merkachecheres</h1> 
     <h1>Formulario</h1>
     <form action="{% url 'procesar_encuesta' %}" method="post">
         {% csrf_token %}
@@ -20,5 +18,4 @@
     </form>
 
     {% include "formulario_encuesta.html" %}
-</body>
-</html>
+{% endblock %}

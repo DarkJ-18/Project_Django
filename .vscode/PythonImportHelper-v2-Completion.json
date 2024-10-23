@@ -516,7 +516,25 @@
         "kind": 2,
         "importPath": "App.tienda.views",
         "description": "App.tienda.views",
-        "peekOfCode": "def productos(request):\n    produ = Product.objects.all()\n    contexto = {\n        \"datos\":produ\n    }\n    return render(request,\"productos/lista_productos.html\", contexto)",
+        "peekOfCode": "def productos(request):\n    produ = Product.objects.all()\n    contexto = {\n        \"datos\":produ\n    }\n    return render(request,\"productos/lista_productos.html\", contexto) \ndef eliminar_producto(request, id_produc):\n    produ = Product.objects.get(id=id_produc)\n    produ.delete()\n    return HttpResponse(f\"Producto {produ.name} eliminado correctamente\")",
+        "detail": "App.tienda.views",
+        "documentation": {}
+    },
+    {
+        "label": "eliminar_producto",
+        "kind": 2,
+        "importPath": "App.tienda.views",
+        "description": "App.tienda.views",
+        "peekOfCode": "def eliminar_producto(request, id_produc):\n    produ = Product.objects.get(id=id_produc)\n    produ.delete()\n    return HttpResponse(f\"Producto {produ.name} eliminado correctamente\")\ndef editar_producto(request, id_produc):\n    pass",
+        "detail": "App.tienda.views",
+        "documentation": {}
+    },
+    {
+        "label": "editar_producto",
+        "kind": 2,
+        "importPath": "App.tienda.views",
+        "description": "App.tienda.views",
+        "peekOfCode": "def editar_producto(request, id_produc):\n    pass",
         "detail": "App.tienda.views",
         "documentation": {}
     },

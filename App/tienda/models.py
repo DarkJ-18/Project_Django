@@ -30,3 +30,4 @@ class Factura(models.Model):
     def __str__(self):
         return f"{self.num_factura} - {self.cliente}"
     
+

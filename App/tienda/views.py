@@ -65,3 +65,11 @@ def productos(request):
         "datos":produ
     }
     return render(request,"productos/lista_productos.html", contexto) 
+
+def eliminar_producto(request, id_produc):
+    produ = Product.objects.get(id=id_produc)
+    produ.delete()
+    return HttpResponse(f"Producto {produ.name} eliminado correctamente")
+
+def editar_producto(request, id_produc):
+    pass
