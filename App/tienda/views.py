@@ -69,6 +69,7 @@ def productos(request):
 
 def eliminar_producto(request, id_produc):
     try:
+        
         produ = Product.objects.get(id=id_produc)
         produ.delete()
         return HttpResponse(f"Producto {produ.name} eliminado correctamente")
