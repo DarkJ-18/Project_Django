@@ -1,7 +1,8 @@
 from django.http import HttpResponse
-from django.shortcuts import render
-from django.db import IntegrityError
+from django.shortcuts import render,redirect
+from django.contrib import messages
 from .models import *
+from django.db import IntegrityError
 
 # vistas basasdas en funciones
 
@@ -69,16 +70,44 @@ def productos(request):
 
 def eliminar_producto(request, id_produc):
     try:
-        
         produ = Product.objects.get(id=id_produc)
         produ.delete()
-        return HttpResponse(f"Producto {produ.name} eliminado correctamente")
+        # return HttpResponse(f"Producto {produ.name} eliminado correctamente")
+        messages.success(request, f"Producto {produ.name} eliminado correctamente")
     except Product.DoesNotExist:
-        return HttpResponse(f"El producto {produc.name} no existe")
+        # return HttpResponse(f"El producto {produc.name} no existe")
+        messages.warning(request, f"El producto {produc.name} no existe")
     except IntegrityError:
-        return HttpResponse("Error al eliminar el producto relacionado con otra tabla")
+        # return HttpResponse("Error al eliminar el producto relacionado con otra tabla")
+        messages.error(request, f"Error al eliminar el producto relacionado con otra tabla")
     except Exception as e:
-        return HttpResponse(f"Error al eliminar el producto  {e}")
+        # return HttpResponse(f"Error al eliminar el producto  {e}")
+        messages.error(request, f"Error al eliminar el producto  {e}")
+    return redirect("productos")
 
 def editar_producto(request, id_produc):
     pass
+
+def agregar_producto(request):
+    if request.method == "POST":
+        cod = request.POST.get("cod")
+        nombre = request.POST.get("nombre")
+        precio = request.POST.get("precio")
+        stock = request.POST.get("stock")
+        CATEGORIAS = request.POST.get("categoria")
+        try:
+            q = Product(
+                cod=cod,
+                nombre=nombre,
+                precio=precio,
+                stock=stock,
+                categoria=CATEGORIAS
+            )
+            q.save()
+            messages.success(request, f"Producto {q.nombre} agregado correctamente")
+        except Exception as e:
+            messages.error(request, f"Error al agregar el producto {e}")
+        return redirect("productos")
+    else:
+        return render(request, "productos/agregar_productos.html")        
+        

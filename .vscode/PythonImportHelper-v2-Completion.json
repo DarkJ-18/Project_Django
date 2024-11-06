@@ -41,6 +41,14 @@
         "documentation": {}
     },
     {
+        "label": "messages",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
         "label": "path",
         "importPath": "django.urls",
         "description": "django.urls",
@@ -171,6 +179,14 @@
     },
     {
         "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
         "importPath": "django.shortcuts",
         "description": "django.shortcuts",
         "isExtraImport": true,
@@ -533,7 +549,7 @@
         "kind": 2,
         "importPath": "App.tienda.views",
         "description": "App.tienda.views",
-        "peekOfCode": "def eliminar_producto(request, id_produc):\n    try:\n        produ = Product.objects.get(id=id_produc)\n        produ.delete()\n        return HttpResponse(f\"Producto {produ.name} eliminado correctamente\")\n    except Product.DoesNotExist:\n        return HttpResponse(f\"El producto {produc.name} no existe\")\n    except IntegrityError:\n        return HttpResponse(\"Error al eliminar el producto relacionado con otra tabla\")\n    except Exception as e:",
+        "peekOfCode": "def eliminar_producto(request, id_produc):\n    try:\n        produ = Product.objects.get(id=id_produc)\n        produ.delete()\n        # return HttpResponse(f\"Producto {produ.name} eliminado correctamente\")\n        messages.success(request, f\"Producto {produ.name} eliminado correctamente\")\n    except Product.DoesNotExist:\n        # return HttpResponse(f\"El producto {produc.name} no existe\")\n        messages.warning(request, f\"El producto {produc.name} no existe\")\n    except IntegrityError:",
         "detail": "App.tienda.views",
         "documentation": {}
     },
@@ -542,7 +558,16 @@
         "kind": 2,
         "importPath": "App.tienda.views",
         "description": "App.tienda.views",
-        "peekOfCode": "def editar_producto(request, id_produc):\n    pass",
+        "peekOfCode": "def editar_producto(request, id_produc):\n    pass\ndef agregar_producto(request):\n    if request.method == \"POST\":\n        cod = request.POST.get(\"cod\")\n        nombre = request.POST.get(\"nombre\")\n        precio = request.POST.get(\"precio\")\n        stock = request.POST.get(\"stock\")\n        CATEGORIAS = request.POST.get(\"categoria\")\n        try:",
+        "detail": "App.tienda.views",
+        "documentation": {}
+    },
+    {
+        "label": "agregar_producto",
+        "kind": 2,
+        "importPath": "App.tienda.views",
+        "description": "App.tienda.views",
+        "peekOfCode": "def agregar_producto(request):\n    if request.method == \"POST\":\n        cod = request.POST.get(\"cod\")\n        nombre = request.POST.get(\"nombre\")\n        precio = request.POST.get(\"precio\")\n        stock = request.POST.get(\"stock\")\n        CATEGORIAS = request.POST.get(\"categoria\")\n        try:\n            q = Product(\n                cod=cod,",
         "detail": "App.tienda.views",
         "documentation": {}
     },

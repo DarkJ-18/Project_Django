@@ -59,6 +59,17 @@
             </div>
         </nav>
     </header>
+
+<div id="notificaciones">
+    {% if messages %}
+        {% for messages in messages %}
+        <div class="alert alert-{% if messages.tags and messages.tags != 'error' %}{{ messages.tags }}{% else %}danger{% endif %} alert-dismissible  fade show" role="alert">{{ messages }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-level="Close"></button>
+        </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
     <div class="container">
         {% block contenido%}
         
