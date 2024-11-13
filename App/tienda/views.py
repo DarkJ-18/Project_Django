@@ -76,7 +76,7 @@ def eliminar_producto(request, id_produc):
         messages.success(request, f"Producto {produ.name} eliminado correctamente")
     except Product.DoesNotExist:
         # return HttpResponse(f"El producto {produc.name} no existe")
-        messages.warning(request, f"El producto {produc.name} no existe")
+        messages.warning(request, f"El producto {produ.name} no existe")
     except IntegrityError:
         # return HttpResponse("Error al eliminar el producto relacionado con otra tabla")
         messages.error(request, f"Error al eliminar el producto relacionado con otra tabla")

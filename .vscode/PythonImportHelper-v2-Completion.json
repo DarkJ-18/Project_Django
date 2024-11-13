@@ -549,7 +549,7 @@
         "kind": 2,
         "importPath": "App.tienda.views",
         "description": "App.tienda.views",
-        "peekOfCode": "def eliminar_producto(request, id_produc):\n    try:\n        produ = Product.objects.get(id=id_produc)\n        produ.delete()\n        # return HttpResponse(f\"Producto {produ.name} eliminado correctamente\")\n        messages.success(request, f\"Producto {produ.name} eliminado correctamente\")\n    except Product.DoesNotExist:\n        # return HttpResponse(f\"El producto {produc.name} no existe\")\n        messages.warning(request, f\"El producto {produc.name} no existe\")\n    except IntegrityError:",
+        "peekOfCode": "def eliminar_producto(request, id_produc):\n    try:\n        produ = Product.objects.get(id=id_produc)\n        produ.delete()\n        # return HttpResponse(f\"Producto {produ.name} eliminado correctamente\")\n        messages.success(request, f\"Producto {produ.name} eliminado correctamente\")\n    except Product.DoesNotExist:\n        # return HttpResponse(f\"El producto {produc.name} no existe\")\n        messages.warning(request, f\"El producto {produ.name} no existe\")\n    except IntegrityError:",
         "detail": "App.tienda.views",
         "documentation": {}
     },
